@@ -1,0 +1,1 @@
+pyinstaller --onefile --distpath C:\Users\Hart\Desktop\Python\HomeWork005 --paths .\\HomeWork005 --paths .\\venv --paths C:\Users\Hart\AppData\Local\Programs\Python\Python310\Scripts HomeWork005\\game_with_sweets.py
