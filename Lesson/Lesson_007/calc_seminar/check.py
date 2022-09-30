@@ -13,3 +13,4 @@ def check(data):
             return math_f.dev(data[0], data[2])
         case _:
             print('something wrong')
+            return 'something wrong'
