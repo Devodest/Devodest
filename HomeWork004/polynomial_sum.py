@@ -79,7 +79,6 @@ for d in array_degrees:
     elif d in s_result.keys():
         result_array.append(s_result[d])
 
-
 k = len(result_array) - 1
 result = 0
 new_list = []

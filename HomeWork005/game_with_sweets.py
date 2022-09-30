@@ -9,20 +9,22 @@
 #
 #     b) Подумайте как наделить бота "интеллектом"
 
-
 import random
+import time
 
-s = 241
-print(f'On the table candies {s} Two players play by making a move after each other.')
+s = random.randrange(61, 1000)
+print(f'On the table candies {s}. Two players play by making a move after each other.')
 print('In one move, you can pick up no more than 28 candies. ')
-print('All of the opponents candies go to the one who made the last move.')
-choose = int(input('If you want to play with a computer write 1, if with a player write 2: '))
 while True:
-    if (choose == 1) or (choose == 2):
-        break
-    else:
-        print('Unfortunately, at the moment, only 2 modes are available.')
-        choose = int(input('If you want to play with a computer write 1, if with a player write 2: '))
+    choose = input('If you want to play with a computer write 1, if with a player write 2: ')
+    try:
+        choose = int(choose)
+        if (choose != 1) and (choose != 2):
+            print('All of the opponents candies go to the one who made the last move.')
+        else:
+            break
+    except ValueError as error:
+        print(f'"{choose}" can not be string!')
 number_first_player = 0
 number_second_player = 0
 if choose == 2:
@@ -99,8 +101,10 @@ elif choose == 1:
                     number_second_player = random.randrange(1, 29)
                     if number_second_player > s:
                         number_second_player = s
-                print(number_second_player)
+                print(f'bot take {number_second_player} candies')
                 s -= number_second_player
                 flag = 1
                 if s == 0:
                     print('Bot a winner')
+
+    time.sleep(10)
