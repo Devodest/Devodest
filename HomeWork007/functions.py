@@ -1,47 +1,54 @@
 import csv
+import data_base
 
-path = r'data.csv'
+
 
 
 def add_info():
     name = input('Name: ')
-    phone = input('Phone: ')
-    new_line = (name, phone)
-    with open(path, 'a', newline='') as data:
+    id = input('Phone: ')
+    From = input('Place of residence: ')
+    new_line = (id, name, From)
+    with open(data_base.path, 'a', newline='') as data:
         writer = csv.writer(data, delimiter=';')
         writer.writerow(new_line)
 
 
 def find_num():
-    name = input('Name: ')
-    with open(path, 'r') as file:
+    id = input('Phone: ')
+    with open(data_base.path, 'r') as file:
         reader = csv.reader(file, delimiter=';')
         for row in reader:
-            if name == row[0]:
-                print(*row)
+            if id == row[0]:
+                print('Phone: {:<15} Name: {:<15} From: {:<15}'. format(*row))
 
 
 def show_all():
-    with open(path, 'r') as file:
+    with open(data_base.path, 'r') as file:
         reader = csv.reader(file, delimiter=';')
         for row in reader:
-            # print('Name: {:<15} Phone: {:<15}'. format(*row))
-            print(row)
+            print('Phone: {:<15} name: {:<15} From: {:<15}'. format(*row))
 
 
 def delete_item():
     updatedlist = []
-    with open(path, 'r') as file:
+    with open(data_base.path, 'r') as file:
         reader = csv.reader(file, delimiter=';')
-        name = input('write the name you want to remove from the directory: ')
+        id = input('write the Phone(id) you want to remove from the directory: ')
         for row in reader:
-            if row[0] != name:
+            if row[0] != id:
                 updatedlist.append(row)
         updatefile(updatedlist)
 
 
 def updatefile(updatedlist):
-    with open(path, "w", newline='') as f:
+    with open(data_base.path, "w", newline='') as f:
         Writer = csv.writer(f, delimiter=';')
         Writer.writerows(updatedlist)
         print("File has been updated")
+
+
+# def data_add():
+
+
+# def data_delete()
